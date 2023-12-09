@@ -10,3 +10,4 @@ handler = http.server.SimpleHTTPRequestHandler
 with socketserver.TCPServer(("", 1234), handler) as httpd:
   # This instruction will keep the server running, waiting for requests from the client.
   httpd.serve_forever()
+  print("Server running at localhost:1234")
