@@ -1,0 +1,20 @@
+# docker-compose.yml file for the client-server example
+version: "3"
+# docker-compose relies on the Dockerfile in each directory containerize the application
+services:
+  # creating a container for the server
+  server:
+    build:
+      context: server/
+    command: python ./server.py
+    ports:
+      - 1234:1234
+
+  client:
+    # creating a container for the client
+    build:
+      context: client/
+    command: python ./client.py
+    network_mode: host
+    depends_on:
+      - server
